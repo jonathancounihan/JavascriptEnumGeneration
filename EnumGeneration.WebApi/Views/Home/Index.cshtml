@@ -1,0 +1,34 @@
+﻿<div class="jumbotron">
+    <h1>Enum Generation</h1>
+    <p class="lead">Generate enums from C# to be used in JavaScript.</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Enum List Use:</h2>
+
+        <form>
+            <label for="jediType">Select Jedi training:</label>
+            <select class="form-control" id="jediType"></select>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var optionsStr = '<option>Select level</option>';
+
+        $.each(Jedi, function (index, value) {
+            optionsStr += '<option value="' + value + '">' + index + '</option>';
+        });
+
+        $('#jediType').append(optionsStr);
+
+        $('#jediType').on('change', function () {
+            var value = $(this).val();
+
+            if (value === Jedi.Master.toString()) {
+                alert(Jedi.Master.Text + ' is very advanced, are you sure?');
+            }
+        });
+    });
+</script>
